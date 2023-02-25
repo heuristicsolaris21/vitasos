@@ -138,7 +138,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String emerphone=snapshot.child(number).child("editemer").getValue(String.class);
                 Log.i("testing","sms"+emerphone);
-                phone = emerphone;
+                phone = "+91"+emerphone;
                 Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
             }
 
