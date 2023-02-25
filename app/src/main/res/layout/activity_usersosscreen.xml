@@ -23,7 +23,7 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
+        android:background="#fff"
         android:text="logout"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
