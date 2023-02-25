@@ -16,6 +16,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -26,7 +27,10 @@ import java.util.Locale;
 
 public class usersosscreen extends AppCompatActivity implements LocationListener  {
 
+    private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     public static String number;
+    String phone;
+    String message;
     LocationManager locationManager;
     Double latitude, longitude;
     Button sos;
@@ -55,6 +59,8 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             {
                 Toast.makeText(usersosscreen.this, "SOS pressed", Toast.LENGTH_SHORT).show();
                 getLocation();
+                Toast.makeText(usersosscreen.this,"sms function called",Toast.LENGTH_SHORT).show();
+                sendSMSMessage();
             }
         });
     }
@@ -113,4 +119,40 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
     }
 
 
+    protected void sendSMSMessage() {
+        phone = "9944823097";
+        message = "this is sent besause of pressing SOS";
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.SEND_SMS)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.SEND_SMS},
+                        MY_PERMISSIONS_REQUEST_SEND_SMS);
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phone, null, message, null, null);
+                    Toast.makeText(getApplicationContext(), "SMS sent.",
+                            Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        }
+
+    }
 }
