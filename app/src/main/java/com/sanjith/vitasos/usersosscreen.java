@@ -43,6 +43,8 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
     Double latitude, longitude;
     Button sos;
     TextView loc,phoneno;
+    Intent s=getIntent();
+    String phonetxt =s.getStringExtra(number);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,10 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         sos=findViewById(R.id.button2);
         loc=findViewById(R.id.textView4);
         phoneno=findViewById(R.id.textView5);
-        Intent s=getIntent();
-        String phonetxt =s.getStringExtra(number);
+        //Intent s=getIntent();
+        //String phonetxt =s.getStringExtra(number);
         phoneno.setText(phonetxt);
+
         if (ContextCompat.checkSelfPermission(usersosscreen.this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(usersosscreen.this,new String[]{
@@ -136,9 +139,10 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String emerphone=snapshot.child(number).child("editemer").getValue(String.class);
+                String emerphone=snapshot.child(phonetxt).child("editemer").getValue(String.class);
                 Log.i("testing","sms"+emerphone);
                 phone = "+91"+emerphone;
+                loc.setText(phone);
                 Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
             }
 
