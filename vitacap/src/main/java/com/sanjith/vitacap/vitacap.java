@@ -67,7 +67,7 @@ public class vitacap extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if(snapshot.hasChild(number1)){
-                                final String getpassword= snapshot.child(number1).child("password").getValue(String.class);
+                                final String getpassword= snapshot.child(number1).child("editpassword").getValue(String.class);
                                 if(getpassword.equals(password1)){
 
                                     Toast.makeText(vitacap.this, "Successfully logged in......", Toast.LENGTH_SHORT).show();
