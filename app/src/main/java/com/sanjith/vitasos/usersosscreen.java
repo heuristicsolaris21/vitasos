@@ -81,6 +81,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         longitude=location.getLongitude();
         loc.setText(latitude+","+longitude);
         Toast.makeText(this, ""+location.getLatitude()+","+location.getLongitude(), Toast.LENGTH_SHORT).show();
+
         try {
             Geocoder geocoder = new Geocoder(usersosscreen.this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
