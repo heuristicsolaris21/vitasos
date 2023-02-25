@@ -18,6 +18,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -66,6 +67,11 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             {
                 Toast.makeText(usersosscreen.this, "SOS pressed", Toast.LENGTH_SHORT).show();
                 getLocation();
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 Toast.makeText(usersosscreen.this,"sms function called",Toast.LENGTH_SHORT).show();
                 sendSMSMessage();
             }
@@ -131,6 +137,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String emerphone=snapshot.child(number).child("editemer").getValue(String.class);
+                Log.i("testing","sms"+emerphone);
                 phone = emerphone;
                 Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
             }
