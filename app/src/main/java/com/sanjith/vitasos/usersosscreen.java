@@ -43,19 +43,32 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
     Double latitude, longitude;
     Button sos;
     TextView loc,phoneno;
-    Intent s=getIntent();
-    String phonetxt =s.getStringExtra(number);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {  //public ==sanjith
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usersosscreen);
         sos=findViewById(R.id.button2);
         loc=findViewById(R.id.textView4);
         phoneno=findViewById(R.id.textView5);
-        //Intent s=getIntent();
-        //String phonetxt =s.getStringExtra(number);
+        Intent s=getIntent();
+        String phonetxt =s.getStringExtra(number);
         phoneno.setText(phonetxt);
+        databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String emerphone=snapshot.child(phonetxt).child("editemer").getValue(String.class);
+                Log.i("testing","sms"+emerphone);
+                phone = "+91"+emerphone;
+                loc.setText(phone);
+                Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         if (ContextCompat.checkSelfPermission(usersosscreen.this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
@@ -136,7 +149,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
 
 
     protected void sendSMSMessage() {
-        databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+        /*databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String emerphone=snapshot.child(phonetxt).child("editemer").getValue(String.class);
@@ -150,7 +163,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
 
 
         message = "this is sent besause of pressing SOS";
