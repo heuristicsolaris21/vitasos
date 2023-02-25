@@ -16,13 +16,14 @@
         android:ems="10"
         android:hint="Enter Mobile Number"
         android:inputType="phone"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintVertical_bias="0.087" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -46,13 +47,13 @@
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.237" />
+        app:layout_constraintVertical_bias="0.188" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -62,13 +63,14 @@
         android:ems="10"
         android:hint="Enter Name"
         android:inputType="textPersonName"
-        android:textColorHint="@color/black"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintVertical_bias="0.475" />
 
     <TextView
         android:id="@+id/textView2"
@@ -80,74 +82,77 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329" />
+        app:layout_constraintVertical_bias="0.281" />
 
     <EditText
         android:id="@+id/editTextNumber"
         android:layout_width="369dp"
         android:layout_height="58dp"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Enter Age"
-        android:textColorHint="@color/black"
         android:background="@color/white"
+        android:ems="10"
+        android:hint="Enter Age"
+        android:inputType="number"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.578" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="369dp"
         android:layout_height="58dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Suffering from Diabetes? (Yes/No)"
         android:background="@color/white"
-        android:textColorHint="@color/black"
+        android:ems="10"
+        android:hint="Suffering from Diabetes? (Yes/No)"
+        android:inputType="textPersonName"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.641" />
+        app:layout_constraintVertical_bias="0.683" />
 
     <EditText
         android:id="@+id/editTextTextPersonName3"
         android:layout_width="369dp"
         android:layout_height="58dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Has BP (Yes/No)"
         android:background="@color/white"
-        android:textColorHint="@color/black"
+        android:ems="10"
+        android:hint="Has BP (Yes/No)"
+        android:inputType="textPersonName"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
         android:layout_width="369dp"
         android:layout_height="58dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Consumes drugs? (Yes/No)"
-        android:textColorHint="@color/black"
         android:background="@color/white"
+        android:ems="10"
+        android:hint="Consumes drugs? (Yes/No)"
+        android:inputType="textPersonName"
         android:textColor="@color/black"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.841" />
+        app:layout_constraintVertical_bias="0.894" />
 
     <Button
         android:id="@+id/button4"
@@ -161,6 +166,23 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintVertical_bias="0.976" />
+
+    <EditText
+        android:id="@+id/editTextPhone4"
+        android:layout_width="369dp"
+        android:layout_height="58dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="Emergency Contact Number"
+        android:inputType="phone"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.357" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
