@@ -83,20 +83,9 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             {
                 Toast.makeText(usersosscreen.this, "SOS pressed", Toast.LENGTH_SHORT).show();
                 getLocation();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(usersosscreen.this,"sms function called",Toast.LENGTH_SHORT).show();
-                sendSMSMessage();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 Intent abc =new Intent(usersosscreen.this,sos2.class);
                 startActivity(abc);
+
             }
         });
     }
@@ -186,7 +175,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
                             Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(),
-                            "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
                     return;
                 }
             }
