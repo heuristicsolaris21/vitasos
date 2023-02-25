@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".usersignin"
-    android:background="">
+    android:background="#004A8C">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
