@@ -2,6 +2,7 @@ package com.sanjith.vitasos;
 
 import static androidx.constraintlayout.motion.widget.Debug.getLocation;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -22,11 +23,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 import java.util.Locale;
 
 public class usersosscreen extends AppCompatActivity implements LocationListener  {
-
+    DatabaseReference databasereference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://vitaapp-7628c-default-rtdb.firebaseio.com/");
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     public static String number;
     String phone;
@@ -120,7 +127,21 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
 
 
     protected void sendSMSMessage() {
-        phone = "+91 9944823097";
+        databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String emerphone=snapshot.child(number).child("editemer").getValue(String.class);
+                phone = emerphone;
+                Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         message = "this is sent besause of pressing SOS";
 
         if (ContextCompat.checkSelfPermission(this,
