@@ -90,6 +90,13 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
                 }
                 Toast.makeText(usersosscreen.this,"sms function called",Toast.LENGTH_SHORT).show();
                 sendSMSMessage();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent abc =new Intent(usersosscreen.this,sos2.class);
+                startActivity(abc);
             }
         });
     }
@@ -116,6 +123,9 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         latitude=location.getLatitude();
         longitude=location.getLongitude();
         loc.setText(latitude+","+longitude);
+        Intent b= new Intent(usersosscreen.this,sos2.class);
+        b.putExtra(sos2.latitude,latitude);
+        b.putExtra(sos2.longitude,longitude);
         Toast.makeText(this, ""+location.getLatitude()+","+location.getLongitude(), Toast.LENGTH_SHORT).show();
 
         try {
