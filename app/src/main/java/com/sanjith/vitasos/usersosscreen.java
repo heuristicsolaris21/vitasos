@@ -66,6 +66,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000L, 5F,usersosscreen.this);
             loc.setText("Getting coordinates....");
+
             //loc.setText(""+location.getLatitude()+","+location.getLongitude());
         }catch (Exception e){
             loc.setText("***");
