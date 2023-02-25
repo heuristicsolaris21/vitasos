@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class usersignin extends AppCompatActivity {
     DatabaseReference databasereference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://vitaapp-7628c-default-rtdb.firebaseio.com/");
-    private EditText editname,editnumber,editage,editpassword,editdia,editbp,editdrugs;
+    private EditText editname,editnumber,editage,editpassword,editdia,editbp,editdrugs,editemer;
     private Button signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class usersignin extends AppCompatActivity {
         editdia=(EditText)findViewById(R.id.editTextTextPersonName2);
         editbp=(EditText)findViewById(R.id.editTextTextPersonName3);
         editdrugs=(EditText)findViewById(R.id.editTextTextPersonName4);
+        editemer=(EditText)findViewById(R.id.editTextPhone4);
         signup=(Button)findViewById(R.id.button4);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +48,7 @@ public class usersignin extends AppCompatActivity {
         String dia=editdia.getText().toString().trim();
         String bp=editbp.getText().toString().trim();
         String drugs=editdrugs.getText().toString().trim();
+        String emer=editemer.getText().toString().trim();
         if(name.isEmpty()){
             editname.setError("Please enter the name.");
             editname.requestFocus();
@@ -87,6 +89,11 @@ public class usersignin extends AppCompatActivity {
             editdrugs.requestFocus();
             return;
         }
+        else if(emer.isEmpty()){
+            editemer.setError("Please enter Yes or No");
+            editemer.requestFocus();
+            return;
+        }
         else{
 
             databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,7 +103,7 @@ public class usersignin extends AppCompatActivity {
                         Toast.makeText(usersignin.this, "The Phone number is already registered", Toast.LENGTH_SHORT).show();
                     } else {
                         // sending data to database.
-                        databasereference.child("Users").child(number).setValue(new helper1(name,number,age,password,dia,bp,drugs));
+                        databasereference.child("Users").child(number).setValue(new helper1(name,number,age,password,dia,bp,drugs,emer));
                         //databasereference.child("Users").child(number).child("NAME").setValue(name);
                         //databasereference.child("Users").child(number).child("PHONE NO.").setValue(number);
                         //databasereference.child("Users").child(number).child("PASSWORD").setValue(password);

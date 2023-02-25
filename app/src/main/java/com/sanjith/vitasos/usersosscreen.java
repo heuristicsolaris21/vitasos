@@ -120,7 +120,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
 
 
     protected void sendSMSMessage() {
-        phone = "9944823097";
+        phone = "+91 9944823097";
         message = "this is sent besause of pressing SOS";
 
         if (ContextCompat.checkSelfPermission(this,

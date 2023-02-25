@@ -1,12 +1,12 @@
 package com.sanjith.vitasos;
 
 public class helper1 {
-    String editname,editnumber,editage,editpassword,editdia,editbp,editdrugs;
+    String editname,editnumber,editage,editpassword,editdia,editbp,editdrugs,editemer;
     public helper1(){
 
     }
 
-    public helper1(String editname, String editnumber, String editage, String editpassword, String editdia, String editbp, String editdrugs) {
+    public helper1(String editname, String editnumber, String editage, String editpassword, String editdia, String editbp, String editdrugs,String editemer) {
         this.editname = editname;
         this.editnumber = editnumber;
         this.editage = editage;
@@ -14,6 +14,7 @@ public class helper1 {
         this.editdia = editdia;
         this.editbp = editbp;
         this.editdrugs = editdrugs;
+        this.editemer=editemer;
     }
 
     public String getEditname() {
@@ -70,5 +71,13 @@ public class helper1 {
 
     public void setEditdrugs(String editdrugs) {
         this.editdrugs = editdrugs;
+    }
+
+    public String getEditemer() {
+        return editemer;
+    }
+
+    public void setEditemer(String editemer) {
+        this.editemer = editemer;
     }
 }
