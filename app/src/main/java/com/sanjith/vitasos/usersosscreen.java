@@ -59,9 +59,9 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String emerphone=snapshot.child(phonetxt).child("editemer").getValue(String.class);
                 Log.i("testing","sms"+emerphone);
-                phone = "+91"+emerphone;
+                phone = emerphone;
                 //loc.setText(phone);
-                Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(usersosscreen.this, "phone "+ phone , Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -149,25 +149,8 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
 
 
     protected void sendSMSMessage() {
-        /*databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String emerphone=snapshot.child(phonetxt).child("editemer").getValue(String.class);
-                Log.i("testing","sms"+emerphone);
-                phone = "+91"+emerphone;
-                loc.setText(phone);
-                Toast.makeText(usersosscreen.this, "posted", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
-
-        String abcdef = "THIS MESSAGE IS SENT BECAUSE SOMEONE ADDED YOU IN THE EMERGENCY CONTACT NEEDS HELP. HIS/HER LOCATION IS https://www.google.com/maps/place/12%C2%B052'09.7%22N+80%C2%B013'02.3%22E/@"+latitude+","+longitude+",17z/data=!3m1!4b1!4m4!3m3!8m2!3d12.869347!4d80.217295";
-        message = "dei message varutha paaru da ";
+        String abcdef = "THIS MESSAGE IS SENT BECAUSE SOMEONE ADDED YOU IN THE EMERGENCY CONTACT NEEDS HELP";
+        message = abcdef;
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.SEND_SMS)
                 != PackageManager.PERMISSION_GRANTED) {
