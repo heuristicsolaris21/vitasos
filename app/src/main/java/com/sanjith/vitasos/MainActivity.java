@@ -74,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this, "Successfully logged in......", Toast.LENGTH_SHORT).show();
                                     Intent a  =new Intent(MainActivity.this,usersosscreen.class);
                                     a.putExtra(usersosscreen.number,number1);
-                                    Intent b= new Intent(MainActivity.this,sos2.class);
-                                    b.putExtra(sos2.number,number1);
                                     startActivity(a);
                                 }
                                 else{

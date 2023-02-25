@@ -110,6 +110,7 @@ public class usersignin extends AppCompatActivity {
                         //databasereference.child("Users").child(number).child("Email ID").setValue(email);
                         // showing progress.....(success msg)
                         Toast.makeText(usersignin.this, "User is registered sucessfully", Toast.LENGTH_SHORT).show();
+
                     }
 
                 }

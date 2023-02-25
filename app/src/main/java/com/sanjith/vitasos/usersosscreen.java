@@ -2,6 +2,8 @@ package com.sanjith.vitasos;
 
 import static androidx.constraintlayout.motion.widget.Debug.getLocation;
 
+import static com.sanjith.vitasos.sos2.phonetxt;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -45,7 +47,7 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
     TextView loc,phoneno;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {  //public ==sanjith
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usersosscreen);
         sos=findViewById(R.id.button2);
@@ -54,22 +56,6 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         Intent s=getIntent();
         String phonetxt =s.getStringExtra(number);
         phoneno.setText(phonetxt);
-        databasereference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String emerphone=snapshot.child(phonetxt).child("editemer").getValue(String.class);
-                Log.i("testing","sms"+emerphone);
-                phone = emerphone;
-                //loc.setText(phone);
-                Toast.makeText(usersosscreen.this, "phone "+ phone , Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
         if (ContextCompat.checkSelfPermission(usersosscreen.this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(usersosscreen.this,new String[]{
@@ -83,7 +69,12 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
             {
                 Toast.makeText(usersosscreen.this, "SOS pressed", Toast.LENGTH_SHORT).show();
                 getLocation();
-                Intent abc =new Intent(usersosscreen.this,sos2.class);
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Intent abc = new Intent(usersosscreen.this,sos2.class);
                 startActivity(abc);
 
             }
@@ -112,16 +103,18 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         latitude=location.getLatitude();
         longitude=location.getLongitude();
         loc.setText(latitude+","+longitude);
-        Intent b= new Intent(usersosscreen.this,sos2.class);
-        b.putExtra(sos2.latitude,latitude);
-        b.putExtra(sos2.longitude,longitude);
+        Intent intent = new Intent(getApplicationContext(), sos2.class);
+        intent.putExtra("phonetxt", phonetxt);
+        intent.putExtra("latitude",latitude);
+        intent.putExtra("longitude",longitude);
         Toast.makeText(this, ""+location.getLatitude()+","+location.getLongitude(), Toast.LENGTH_SHORT).show();
 
         try {
             Geocoder geocoder = new Geocoder(usersosscreen.this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
             String address = addresses.get(0).getAddressLine(0);
-
+            //Intent abc =new Intent(usersosscreen.this,sos2.class);
+            //startActivity(abc);
             //loc.setText(""+location.getLatitude()+","+location.getLongitude());
 
         }
@@ -146,40 +139,4 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
 
     }
 
-
-    protected void sendSMSMessage() {
-        String abcdef = "THIS MESSAGE IS SENT BECAUSE SOMEONE ADDED YOU IN THE EMERGENCY CONTACT NEEDS HELP";
-        message = abcdef;
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.SEND_SMS)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.SEND_SMS)) {
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.SEND_SMS},
-                        MY_PERMISSIONS_REQUEST_SEND_SMS);
-            }
-        }
-    }
-    @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_SEND_SMS: {
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    SmsManager smsManager = SmsManager.getDefault();
-                    smsManager.sendTextMessage(phone, null, message, null, null);
-                    Toast.makeText(getApplicationContext(), "SMS sent.",
-                            Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(),
-                            "SMS failed, please try again.", Toast.LENGTH_LONG).show();
-                    return;
-                }
-            }
-        }
-
-    }
 }
