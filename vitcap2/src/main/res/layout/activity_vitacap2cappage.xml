@@ -63,8 +63,8 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="278dp"
-        android:layout_height="117dp"
+        android:layout_width="307dp"
+        android:layout_height="146dp"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

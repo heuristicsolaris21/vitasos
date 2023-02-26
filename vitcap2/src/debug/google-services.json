@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "574799022627",
+    "firebase_url": "https://vitaapp-7628c-default-rtdb.firebaseio.com",
+    "project_id": "vitaapp-7628c",
+    "storage_bucket": "vitaapp-7628c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574799022627:android:4d1048f4021f3d5b003f96",
+        "android_client_info": {
+          "package_name": "com.sanjith.vitasos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574799022627-fhdk5g9r5dgp074a0o0osf81or1093io.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF_tEs_fUJ8Ua6ZgpGrRpxqytXfZ6aKB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574799022627-fhdk5g9r5dgp074a0o0osf81or1093io.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574799022627:android:e602754880c62b95003f96",
+        "android_client_info": {
+          "package_name": "com.sanjith.vitcap2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574799022627-fhdk5g9r5dgp074a0o0osf81or1093io.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF_tEs_fUJ8Ua6ZgpGrRpxqytXfZ6aKB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574799022627-fhdk5g9r5dgp074a0o0osf81or1093io.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

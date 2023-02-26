@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btsignup=findViewById(R.id.button2);
         btlogin=findViewById(R.id.button);
         phonetxt=findViewById(R.id.editTextPhone);
-        passwordtxt=findViewById(R.id.editTextNumberPassword);
+        passwordtxt=findViewById(R.id.editTextTextPassword2);
         context=this;
         btsignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                                 if(getpassword.equals(password1)){
 
                                     Toast.makeText(MainActivity.this, "Successfully logged in......", Toast.LENGTH_SHORT).show();
-                                    //Intent a  =new Intent(vitacap.this,cappage.class);
-                                    //startActivity(a);
+                                    Intent a  =new Intent(MainActivity.this,Vitacap2cappageActivity.class);
+                                    startActivity(a);
                                 }
                                 else{
                                     Toast.makeText(MainActivity.this, "Wrong password......", Toast.LENGTH_SHORT).show();
