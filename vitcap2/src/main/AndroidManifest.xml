@@ -9,6 +9,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vitasos">
         <activity
+            android:name=".Vitacap2cappageActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".vitacap2signup"
             android:exported="false">
             <meta-data
