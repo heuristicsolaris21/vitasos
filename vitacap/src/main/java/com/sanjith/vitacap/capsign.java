@@ -32,7 +32,8 @@ public class capsign extends AppCompatActivity {
         signup=(Button) findViewById(R.id.button3);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { signupfun();
+            public void onClick(View v) {
+                signupfun();
 
             }
         });
@@ -75,16 +76,10 @@ public class capsign extends AppCompatActivity {
                     } else {
                         // sending data to database.
                         databasereference.child("Users").child(number).setValue(new helper1(name, number, vehicle, password, license));
-                        //databasereference.child("Users").child(number).child("NAME").setValue(name);
-                        //databasereference.child("Users").child(number).child("PHONE NO.").setValue(number);
-                        //databasereference.child("Users").child(number).child("PASSWORD").setValue(password);
-                        //databasereference.child("Users").child(number).child("Email ID").setValue(email);
-                        // showing progress.....(success msg)
                         Toast.makeText(capsign.this, "User is registered sucessfully", Toast.LENGTH_SHORT).show();
                     }
 
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 

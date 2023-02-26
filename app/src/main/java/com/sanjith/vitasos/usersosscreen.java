@@ -2,7 +2,6 @@ package com.sanjith.vitasos;
 
 import static androidx.constraintlayout.motion.widget.Debug.getLocation;
 
-import static com.sanjith.vitasos.sos2.phonetxt;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -40,11 +40,16 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     public static String number;
     String phone;
-    String message;
+    String message,ph;
     LocationManager locationManager;
     Double latitude, longitude;
     Button sos;
     TextView loc,phoneno;
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREFS="mypref";
+    private static final String LATI="Lati";
+    private static final String LONGI="longi";
+    private static final String PH="phn";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +58,12 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         sos=findViewById(R.id.button2);
         loc=findViewById(R.id.textView4);
         phoneno=findViewById(R.id.textView5);
-        Intent s=getIntent();
+        sharedPreferences=getSharedPreferences(SHARED_PREFS,MODE_PRIVATE);
+
+
+        Intent s = getIntent();
         String phonetxt =s.getStringExtra(number);
+        ph=phonetxt;
         phoneno.setText(phonetxt);
         if (ContextCompat.checkSelfPermission(usersosscreen.this, android.Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED){
@@ -70,12 +79,12 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
                 Toast.makeText(usersosscreen.this, "SOS pressed", Toast.LENGTH_SHORT).show();
                 getLocation();
                 try {
-                    Thread.sleep(10000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Intent abc = new Intent(usersosscreen.this,sos2.class);
-                startActivity(abc);
+                //Intent abc = new Intent(usersosscreen.this,sos2.class);
+                //startActivity(abc);
 
             }
         });
@@ -103,10 +112,16 @@ public class usersosscreen extends AppCompatActivity implements LocationListener
         latitude=location.getLatitude();
         longitude=location.getLongitude();
         loc.setText(latitude+","+longitude);
-        Intent intent = new Intent(getApplicationContext(), sos2.class);
-        intent.putExtra("phonetxt", phonetxt);
-        intent.putExtra("latitude",latitude);
-        intent.putExtra("longitude",longitude);
+        Intent intent = new Intent(usersosscreen.this,sos2.class);
+        //intent.putExtra(sos2.phone,ph);
+        //intent.putExtra(sos2.latitude,latitude);
+        //intent.putExtra(sos2.longitude,longitude);
+        SharedPreferences. Editor editor =sharedPreferences.edit();
+        editor.putString (LATI, latitude.toString());
+        editor.putString(LONGI, longitude.toString());
+        editor.putString(PH, ph);
+        editor.apply();
+        startActivity(intent);
         Toast.makeText(this, ""+location.getLatitude()+","+location.getLongitude(), Toast.LENGTH_SHORT).show();
 
         try {

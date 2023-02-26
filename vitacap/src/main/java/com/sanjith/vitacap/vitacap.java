@@ -71,8 +71,8 @@ public class vitacap extends AppCompatActivity {
                                 if(getpassword.equals(password1)){
 
                                     Toast.makeText(vitacap.this, "Successfully logged in......", Toast.LENGTH_SHORT).show();
-                                    Intent a  =new Intent(vitacap.this,cappage.class);
-                                    startActivity(a);
+                                    //Intent a  =new Intent(vitacap.this,cappage.class);
+                                    //startActivity(a);
                                 }
                                 else{
                                     Toast.makeText(vitacap.this, "Wrong password......", Toast.LENGTH_SHORT).show();
