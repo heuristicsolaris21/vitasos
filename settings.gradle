@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "vitasos"
 include ':app'
 include ':vitacap'
+include ':vitcap2'

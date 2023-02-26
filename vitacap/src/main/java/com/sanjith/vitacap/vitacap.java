@@ -84,7 +84,7 @@ public class vitacap extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                        public void onCancelled(@NonNull DatabaseError error){
 
                         }
                     });//data base checking...
