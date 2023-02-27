@@ -23,6 +23,7 @@ public class Vitacap2cappageActivity extends AppCompatActivity {
     TextView abc;
     String key;
     String attributeValue;
+    String attribute1, attribute2, attribute3;
     DatabaseReference databasereference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://vitaapp-7628c-default-rtdb.firebaseio.com/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,9 @@ public class Vitacap2cappageActivity extends AppCompatActivity {
                         abc=(TextView)findViewById(R.id.textView3);
                         abc.setText(attributeValue);
                     }
+
+                    Toast.makeText(getApplicationContext(), attribute1+","+attribute1+","+attribute1, Toast.LENGTH_SHORT).show();
+
                 }
             }
 
@@ -48,7 +52,7 @@ public class Vitacap2cappageActivity extends AppCompatActivity {
             }
         });
 
-        abc=(TextView)findViewById(R.id.textView3);
+
         //Toast.makeText(this, "asdf"+attributeValue, Toast.LENGTH_SHORT).show();
         //abc.setText(attributeValue);
 
