@@ -40,11 +40,18 @@ public class Vitacap2cappageActivity extends AppCompatActivity {
                         // Extract the latitude and longitude values from the attributeValue string
                         int latStartIndex = attributeValue.indexOf("latitude=") + 9;
                         int latEndIndex = attributeValue.indexOf(",", latStartIndex);
-                         latitude = Double.parseDouble(attributeValue.substring(latStartIndex, latEndIndex));
+                        if (latEndIndex >= 0) {
+                            latitude = Double.parseDouble(attributeValue.substring(latStartIndex, latEndIndex));
+                        } else {
+                            // Handle error: comma not found after latitude=
+                        }
                         int longStartIndex = attributeValue.indexOf("longitude=") + 10;
                         int longEndIndex = attributeValue.indexOf("}", longStartIndex);
-                         longitude = Double.parseDouble(attributeValue.substring(longStartIndex, longEndIndex));
-
+                        if (longEndIndex >= 0) {
+                            longitude = Double.parseDouble(attributeValue.substring(longStartIndex, longEndIndex));
+                        } else {
+                            // Handle error: closing brace not found after longitude=
+                        }
                         Toast.makeText(getApplicationContext(), "Latitude: " + latitude + ", Longitude: " + longitude, Toast.LENGTH_SHORT).show();
                         abc = (TextView) findViewById(R.id.textView3);
                         abc.setText("Latitude: " + latitude + "\nLongitude: " + longitude);
@@ -52,6 +59,7 @@ public class Vitacap2cappageActivity extends AppCompatActivity {
                     }
                 }
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -61,16 +69,8 @@ public class Vitacap2cappageActivity extends AppCompatActivity {
 
     }
     public void acc(View view){
-        // Create a Uri object with the location's latitude and longitude
-        Uri locationUri = Uri.parse("geo:" + latitude + "," + longitude);
-
-        // Create an intent to open Google Maps with the location
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, locationUri);
-
-        // Set the package name to "com.google.android.apps.maps" to ensure that Google Maps is used
-        mapIntent.setPackage("com.google.android.apps.maps");
-
-        // Launch the intent
-        startActivity(mapIntent);
+        String url = "http://maps.google.com/maps?q=loc:" + latitude + "," + longitude + " (User)";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
     }
 }
